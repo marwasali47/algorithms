@@ -1,25 +1,25 @@
 
-class Node {
+class ANode {
     int key;
-    Node left, right;
+    ANode left, right;
 
-    Node(int item){
+    ANode(int item){
         key = item;
         left = right = null;
     }
 }
 
 class BinaryTree {
-    Node root;
+    ANode root;
 
-    boolean isMirror(Node node1, Node node2) {
-        if (node1 == null && node2 == null)
+    boolean isMirror(ANode ANode1, ANode ANode2) {
+        if (ANode1 == null && ANode2 == null)
             return true;
 
-        if (node1 != null && node2 != null
-                && node1.key == node2.key)
-            return (isMirror(node1.left, node2.right)
-                    && isMirror(node1.right, node2.left));
+        if (ANode1 != null && ANode2 != null
+                && ANode1.key == ANode2.key)
+            return (isMirror(ANode1.left, ANode2.right)
+                    && isMirror(ANode1.right, ANode2.left));
 
         return false;
     }
@@ -31,13 +31,13 @@ class BinaryTree {
     public static void main(String[] args) {
 
         BinaryTree tree = new BinaryTree();
-        tree.root = new Node(1);
-        tree.root.left = new Node(2);
-        tree.root.right = new Node(2);
-        tree.root.left.left = new Node(3);
-        tree.root.left.right = new Node(4);
-        tree.root.right.left = new Node(4);
-        tree.root.right.right = new Node(5);
+        tree.root = new ANode(1);
+        tree.root.left = new ANode(2);
+        tree.root.right = new ANode(2);
+        tree.root.left.left = new ANode(3);
+        tree.root.left.right = new ANode(4);
+        tree.root.right.left = new ANode(4);
+        tree.root.right.right = new ANode(5);
         System.out.println("isSymmetric " + tree.isSymmetric());
     }
 }
