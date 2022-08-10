@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-public class ValidPathBetweenTwoNodes {
+public class NumberOfProvinces {
 
     public static void main(String[] args) {
         int[][] edges = {{4,3},{1,4},{4,8},{1,7},{6,4},{4,2},{7,4},{4,0},{0,9},{5,4}};
@@ -23,6 +22,7 @@ public class ValidPathBetweenTwoNodes {
         for(int i = 0 ; i < n ; i ++){
             map.put(i, new ArrayList<>());
         }
+
         //fill the map
         for(int i =0 ; i < edges.length ; i ++){
             map.get(edges[i][0]).add(edges[i][1]);
@@ -44,15 +44,14 @@ public class ValidPathBetweenTwoNodes {
         visited[source] = true ;
 
         for(int i =0  ; i < nodes.size() ; i++){
-
-            if(visited[nodes.get(i)] ==true )
-                continue;
-
+            if(visited[nodes.get(i)] ==true ) continue;
             if(checkPathFromSourceToDestination(visited, map , nodes.get(i), map.get(nodes.get(i)) ,destination))
-                return true;
+                    return true;
         }
 
         return false;
 
     }
+
+
 }
