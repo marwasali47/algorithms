@@ -18,20 +18,25 @@ public class ValidPathBetweenTwoNodes {
 
     public static boolean validPath(int n, int[][] edges, int source, int destination) {
 
-        //create the map
-        HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
-        for(int i = 0 ; i < n ; i ++){
-            map.put(i, new ArrayList<>());
-        }
-        //fill the map
-        for(int i =0 ; i < edges.length ; i ++){
-            map.get(edges[i][0]).add(edges[i][1]);
-            map.get(edges[i][1]).add(edges[i][0]);
-        }
+        HashMap<Integer, ArrayList<Integer>> map = getIntegerArrayListHashMap(n, edges);
 
         boolean visited[] = new boolean[n];
 
         return checkPathFromSourceToDestination(visited ,map , source ,map.get(source),destination);
+    }
+
+    private static HashMap<Integer, ArrayList<Integer>> getIntegerArrayListHashMap(int n, int[][] edges) {
+        //create the map
+        HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
+        for(int i = 0; i < n; i ++){
+            map.put(i, new ArrayList<>());
+        }
+        //fill the map
+        for(int i = 0; i < edges.length ; i ++){
+            map.get(edges[i][0]).add(edges[i][1]);
+            map.get(edges[i][1]).add(edges[i][0]);
+        }
+        return map;
     }
 
     private static boolean checkPathFromSourceToDestination(boolean[] visited,
