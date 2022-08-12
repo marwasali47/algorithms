@@ -28,36 +28,37 @@ public class IsCyclicGraph {
 
         // Mark all the vertices as not visited and  not part of recursion stack
         boolean[] visited = new boolean[n];
-        boolean[] recStack = new boolean[n];
+        boolean[] cycle = new boolean[n];
 
 
         // Call the recursive helper function to
         // detect cycle in different DFS trees
         for (int i = 0; i < n; i++)
-            if (isCyclicUtil(i, visited, recStack ,map))
+            if (isCyclicUtil(i, visited, cycle ,map))
                 return true;
 
         return false;
     }
 
-    private static boolean isCyclicUtil(int i, boolean[] visited, boolean[] recStack , HashMap<Integer, ArrayList<Integer>> map)
+    private static boolean isCyclicUtil(int i,boolean[] visited,
+                                        boolean[] cycle , HashMap<Integer, ArrayList<Integer>> map)
     {
 
         // Mark the current node as visited and part of recursion stack
-        if (recStack[i])
+        if (cycle[i])
             return true;
 
         if (visited[i])
             return false;
 
         visited[i] = true;
-        recStack[i] = true;
+        cycle[i] = true;
 
         for (Integer c: map.get(i))
-            if (isCyclicUtil(c, visited, recStack,map))
+            if (isCyclicUtil(c, visited, cycle,map))
                 return true;
 
-        recStack[i] = false;
+        cycle[i] = false;
         return false;
     }
 }
