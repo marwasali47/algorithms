@@ -4,9 +4,7 @@ import java.util.List;
 
 public class PrintAllTreePaths {
 
-    /**
-     * Definition for a binary tree node.*/
-     public static class TreeNode {
+     private static class TreeNode {
           int val;
           TreeNode left;
           TreeNode right;
