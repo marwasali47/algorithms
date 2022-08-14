@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ValidPathBetweenTwoNodes {
+public class FindPathBetweenTwoNodes {
 
     public static void main(String[] args) {
         int[][] edges = {{4,3},{1,4},{4,8},{1,7},{6,4},{4,2},{7,4},{4,0},{0,9},{5,4}};
