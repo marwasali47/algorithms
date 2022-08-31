@@ -12,8 +12,11 @@ public class FloodFill {
             System.out.println();
         }
         System.out.println("****************************************************");
+
         int [][] visited = new int[image.length][image[0].length];
         DFSFloodFill(image , 1,1,2 , image[1][1] ,visited);
+
+
         for (int i = 0; i < image.length; i++) {
             for (int j = 0; j < image[i].length; j++) {
                 System.out.print(image[i][j] + " ");
