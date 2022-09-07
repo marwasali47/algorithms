@@ -22,11 +22,6 @@ public class MaxLandAread {
         System.out.println("area = " +  area);
     }
 
-    public static int[][] floodFill(int[][] image, int sr, int sc, int color) {
-
-        return image;
-    }
-
     public static int DFSMaxLandArea(int[][] grid , int i , int j , int[][] visited) {
 
         if (i < 0 || i >= grid.length  // rows

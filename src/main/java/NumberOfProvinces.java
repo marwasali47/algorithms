@@ -4,54 +4,50 @@ import java.util.HashMap;
 public class NumberOfProvinces {
 
     public static void main(String[] args) {
-        int[][] edges = {{4,3},{1,4},{4,8},{1,7},{6,4},{4,2},{7,4},{4,0},{0,9},{5,4}};
-        int source = 5 ;
-        int destination = 9;
-        System.out.println(validPath(10 ,edges,source ,destination ));
-
-       /* int[][] edges = {{0,7},{0,8},{6,1},{2,0},{0,4},{5,8},{4,7},{1,3},{3,5},{6,5}};
-        int source = 7 ;
-        int destination = 5;
-        System.out.println(validPath(10 ,edges,source ,destination ));*/
+        int[][] edges = {{1,1,0},{1,1,0},{0,0,1}};
+        System.out.println(findCircleNum(edges));
     }
 
-    public static boolean validPath(int n, int[][] edges, int source, int destination) {
+    public static int  findCircleNum(int[][] edges) {
 
+        if (edges.length == 0) return 0;
+
+        HashMap<Integer, ArrayList<Integer>> map = getIntegerArrayListHashMap(edges.length, edges);
+
+        int[][] visited = new int[edges.length][edges[0].length];
+        for (int i = 0; i < edges.length; i++)
+            for (int j = 0; j < edges[i].length; j++) {
+
+            }
+
+        return findCircleNumForCity( visited ,edges );
+    }
+
+    private static HashMap<Integer, ArrayList<Integer>> getIntegerArrayListHashMap(int n, int[][] edges) {
         //create the map
         HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
-        for(int i = 0 ; i < n ; i ++){
+        for(int i = 0; i < n; i ++){
             map.put(i, new ArrayList<>());
         }
-
         //fill the map
-        for(int i =0 ; i < edges.length ; i ++){
+        for(int i = 0; i < edges.length ; i ++){
             map.get(edges[i][0]).add(edges[i][1]);
             map.get(edges[i][1]).add(edges[i][0]);
         }
-
-        boolean visited[] = new boolean[n];
-
-        return checkPathFromSourceToDestination(visited ,map , source ,map.get(source),destination);
+        return map;
     }
 
-    private static boolean checkPathFromSourceToDestination(boolean[] visited,
-                                                            HashMap<Integer, ArrayList<Integer>> map,
-                                                            int source, ArrayList<Integer> nodes,
-                                                            int destination) {
+    private static int findCircleNumForCity(int[][] visited, int[][] edges) {
 
-        if(nodes.contains(destination)) return true;
+/*
+        if (i < 0 || i >= image.length  // rows
+                || j <0 || j >= image[0].length //columns
+                || image[i][j] != cellColor
+                || visited[i][j] == 1)
+            return ;*/
 
-        visited[source] = true ;
 
-        for(int i =0  ; i < nodes.size() ; i++){
-            if(visited[nodes.get(i)] ==true ) continue;
-            if(checkPathFromSourceToDestination(visited, map , nodes.get(i), map.get(nodes.get(i)) ,destination))
-                    return true;
-        }
-
-        return false;
+        return 1;
 
     }
-
-
 }
