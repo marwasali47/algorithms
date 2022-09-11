@@ -2,6 +2,20 @@ import java.util.List;
 
 public class MaxDepthOfNTree {
 
+
+         public class TreeNode {
+          int val;
+          TreeNode left;
+          TreeNode right;
+          TreeNode() {}
+          TreeNode(int val) { this.val = val; }
+          TreeNode(int val, TreeNode left, TreeNode right) {
+              this.val = val;
+              this.left = left;
+              this.right = right;
+          }
+      }
+
     private static class Node {
         public int val;
         public List<Node> children;
@@ -34,6 +48,27 @@ public class MaxDepthOfNTree {
             if (currentMax > max) max = currentMax;
         }
         return max + 1;
+
+    }
+
+    public static int minDepth(TreeNode root) {
+
+        if (root == null)
+            return 0;
+
+        int left =  minDepth(root.left);
+        int right = minDepth(root.right);
+        int min = Math.min(left,right);
+        return 1 + (min > 0 ? min : Math.max(left, right));
+
+    }
+
+    public static  int maxDepthOfBinaryTree(TreeNode root) {
+
+        if (root == null)
+            return 0;
+
+        return 1 + Math.max(maxDepthOfBinaryTree(root.left) , maxDepthOfBinaryTree(root.right));
 
     }
 }

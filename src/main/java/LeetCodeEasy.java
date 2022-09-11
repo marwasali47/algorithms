@@ -47,9 +47,6 @@ public class LeetCodeEasy {
             list.add(myset.iterator().next());
             myset.clear();
         }
-
-
-
         return list.size() >  0? list.get(list.size()-1) : "";
     }
 
@@ -128,15 +125,20 @@ public class LeetCodeEasy {
 
     public static int searchInsert(int[] nums, int target) {
 
+        int start= 0 ; int end = nums.length ; int mid = (end-start) /2;
+        while(start <= end){
 
-        int x =  Arrays.binarySearch(nums, target) ;
+            if(target > mid )
+                start = mid +1 ;
 
-        if(x < 0 ) return nums.length;
+            if(target == mid)
+                return mid;
 
-        if(x >= 0 ) return x;
-
-        return 0;
-
+            if(target < mid){
+                end = mid - 1;
+            }
+        }
+        return start;
     }
 
     public static int lengthOfLastWord(String s) {
@@ -169,26 +171,5 @@ public class LeetCodeEasy {
         return digits;
     }
 
-    public ListNode deleteDuplicatesFromLinkedList(ListNode head) {
-        ListNode current = head;
-        while( current != null){
-            if(current.next == null) return head;
-            if(current.val == current.next.val ){
-                current.next = current.next.next;
-            }
-            else current = current.next;
-        }
-        return head ;
-
-    }
-
-    public void merge(int[] nums1, int m, int[] nums2, int n) {
-
-        SortedSet set= new TreeSet(Arrays.asList(nums1));
-        Collections.addAll(set, nums2);
-
-        String[] myArray = new String[set.size()];
-        set.toArray(myArray);
-    }
 
 }
