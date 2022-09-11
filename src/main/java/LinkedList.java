@@ -9,6 +9,8 @@ public class LinkedList {
             runner = runner.next.next;
             if(walker==runner) return true;
         }
+
+
         return false;
 
     }
