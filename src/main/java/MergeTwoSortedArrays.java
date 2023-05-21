@@ -2,7 +2,9 @@ public class MergeTwoSortedArrays {
 
     public static void main(String[] args) {
 
-        System.out.println("merged  = " + merge(new int[]{1,2,3} ,new int[]{4,7}));
+        int [] merged = merge(new int[]{1,2,3} ,new int[]{4,7});
+        for (int i=0 ; i<merged.length ; i++)
+            System.out.print(merged[i]);
     }
 
     public static int[] merge(int[] arr1 , int[] arr2) {
